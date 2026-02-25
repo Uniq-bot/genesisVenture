@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import gsap from "gsap";
 import { ArrowRight, Plus } from "lucide-react";
 import Image from "next/image";
-import { title } from "process";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function OurServices() {
   const services = [
@@ -48,40 +47,43 @@ export default function OurServices() {
   ];
   const [currService, setCurrService] = useState<number | null>(null);
   const [expandedService, setExpandedService] = useState<number | null>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const handleServiceClick = (index: number) => {
     setCurrService(index);
     setExpandedService(expandedService === index ? null : index);
   };
 
+  useEffect(() => {
+    if (currService !== null && imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+      );
+    }
+  }, [currService]);
+
   return (
     <div className="w-full md:min-h-screen bg-[#e9e7e0] border-b border-blue-900">
-      <h1 className="text-[60px] sm:text-[80px] md:text-[120px] lg:text-[170px] static md:absolute bg-[#e9e7e0] mt-0 md:mt-10 leading-none font-[PPFONT] px-5 text-left flex gap-4 md:gap-70 text-blue-900 pt-4">
-        Our <span className="pl-2 md:pl-8">Services</span>
+      <h1 className="text-[55px] sm:text-[80px] md:text-[80px] lg:text-[170px] static md:absolute bg-[#e9e7e0] mt-0 md:mt-8 lg:mt-10 leading-none font-[PPFONT] px-5 text-left flex gap-4 md:gap-40 lg:gap-70 text-blue-900 pt-4">
+        Our <span className="pl-2 md:pl-6 lg:pl-8">Services</span>
       </h1>
       <div className="w-full flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2  md:min-h-screen hidden md:flex items-center justify-center border-b md:border-b-0 md:border-r border-blue-900">
+        <div className="w-full md:w-1/2 md:min-h-screen hidden md:flex items-center justify-center border-b md:border-b-0 md:border-r border-blue-900">
           {currService !== null && (
-            <motion.div
-              key={currService}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.6,
-                ease: [0.25, 0.1, 0.25, 1]
-              }}
-            >
+            <div ref={imageRef} key={currService}>
               <Image
                 src={services[currService].image}
                 alt={services[currService].title}
                 width={400}
                 height={400}
-                className="grayscale mt-50"
+                className="grayscale mt-30 md:mt-40 lg:mt-50 md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]"
               />
-            </motion.div>
+            </div>
           )}
         </div>
-        <div className="w-full md:w-1/2 font-[PPFONT] mt-0 md:mt-70 flex flex-col justify-center px-2 md:px-4 py-5 md:py-10">
+        <div className="w-full md:w-1/2 font-[PPFONT] mt-0 md:mt-50 lg:mt-70 flex flex-col justify-center px-2 md:px-3 lg:px-4 py-5 md:py-8 lg:py-10">
           {services.map((service, index) => {
             const isExpanded = expandedService === index;
             return (
@@ -90,9 +92,9 @@ export default function OurServices() {
                 className="w-full border-t relative cursor-pointer border-blue-900 text-blue-900"
                 onClick={() => handleServiceClick(index)}
               >
-                <div className="flex justify-between items-center px-4 md:px-10 py-3 md:py-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl group">
+                <div className="flex justify-between items-center px-4 md:px-6 lg:px-10 py-3 md:py-4 lg:py-5 text-xl sm:text-2xl md:text-2xl lg:text-4xl group">
                   {service.title} 
-                  <Plus className={`transition-transform duration-500 group-hover:rotate-90 w-5 h-5 md:w-6 md:h-6 ${isExpanded ? 'rotate-45' : ''}`} />
+                  <Plus className={`transition-transform duration-500 group-hover:rotate-90 w-5 h-5 md:w-5 md:h-5 lg:w-6 lg:h-6 ${isExpanded ? 'rotate-45' : ''}`} />
                 </div>
                 <div 
                   className="overflow-hidden transition-all duration-700 ease-in-out"
@@ -102,12 +104,12 @@ export default function OurServices() {
                   }}
                 >
                   <div className="py-2">
-                    <p className="pl-4 md:pl-100 pb-5 text-xs md:text-sm font-mono uppercase flex justify-end text-left ">
+                    <p className="pl-4 md:pl-10 lg:pl-100 pb-5 text-xs md:text-xs lg:text-sm font-mono uppercase flex justify-end text-left">
                       {service.description}
                     </p>
-                    <div className="flex justify-end pr-4 md:pr-10">
-                      <div className="flex font-mono gap-2 md:gap-3 items-center py-3 md:py-5 text-xs md:text-sm">
-                        [ Learn more <ArrowRight size={12} className="md:w-[15px] md:h-[15px]" /> ]
+                    <div className="flex justify-end pr-4 md:pr-6 lg:pr-10">
+                      <div className="flex font-mono gap-2 md:gap-2 lg:gap-3 items-center py-3 md:py-4 lg:py-5 text-xs md:text-xs lg:text-sm">
+                        [ Learn more <ArrowRight size={12} className="md:w-[13px] md:h-[13px] lg:w-[15px] lg:h-[15px]" /> ]
                       </div>
                     </div>
                   </div>
@@ -115,12 +117,12 @@ export default function OurServices() {
               </div>
             );
           })}
-            <div className="p-3 md:p-5 font-mono border-t border-blue-900">
-                <div className="relative h-14 md:h-20 overflow-hidden group">
-                    <div className="absolute inset-0 bg-blue-700 text-white uppercase flex items-center justify-center cursor-pointer transition-all duration-300 group-hover:-translate-y-full group-hover:scale-0 text-xs md:text-base">
+            <div className="p-3 md:p-4 lg:p-5 font-mono border-t border-blue-900">
+                <div className="relative h-14 md:h-16 lg:h-20 overflow-hidden group">
+                    <div className="absolute inset-0 bg-blue-700 text-white uppercase flex items-center justify-center cursor-pointer transition-all duration-300 group-hover:-translate-y-full group-hover:scale-0 text-xs md:text-sm lg:text-base">
                         View All Services
                     </div>
-                    <div className="absolute inset-0 bg-white text-blue-900 border border-blue-900 uppercase flex items-center justify-center cursor-pointer transition-all duration-700 translate-y-full scale-0 group-hover:translate-y-0 group-hover:scale-100 text-xs md:text-base">
+                    <div className="absolute inset-0 bg-white text-blue-900 border border-blue-900 uppercase flex items-center justify-center cursor-pointer transition-all duration-700 translate-y-full scale-0 group-hover:translate-y-0 group-hover:scale-100 text-xs md:text-sm lg:text-base">
                         View All Services
                     </div>
                 </div>

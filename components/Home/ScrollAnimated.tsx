@@ -6,10 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ScrollAnimated() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const data = [
+const data = [
     {
       title: "Strategy",
       number: "01",
@@ -36,50 +33,15 @@ export default function ScrollAnimated() {
     },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      itemRefs.current.forEach((item, index) => {
-        if (!item) return;
-
-        const totalItems = data.length;
-        const middleIndex = (totalItems - 1) / 2;
-        const rotationDirection = index < middleIndex ? -1 : 1;
-        const rotationAmount = Math.abs(index - middleIndex) * 3 * rotationDirection;
-
-        // Set initial state
-        gsap.set(item, {
-          
-          rotation: rotationAmount,
-          scale: 0.95,
-        });
-
-        // Create scroll-triggered animation
-        gsap.to(item, {
-          x: 0,
-          rotation: 0,
-          scale: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 90%",
-            end: "top 40%",
-            scrub: 1,
-          },
-        });
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div  className="flex flex-col gap-10">
       {data.map((item, index) => (
         <div
           key={index}
-          className="text-blue-900 font-[PPFONT] py-5 bg-white flex flex-col w-150 px-2"
+          className="text-blue-900 font-[PPFONT] py-5 bg-white flex flex-col lg:w-150 px-2"
         >
-          <div className="flex justify-between px-5 py-2 text-5xl border-b border-blue-900">
+          <div className="flex justify-between px-5 py-2 ld:text-5xl text-2xl border-b border-blue-900">
             <h1>{item.title}</h1>
             <p>{item.number}</p>
           </div>
