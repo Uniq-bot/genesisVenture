@@ -104,11 +104,11 @@ export default function OurServices() {
                   }}
                 >
                   <div className="py-2">
-                    <p className="pl-4 md:pl-10 lg:pl-100 pb-5 text-xs md:text-xs lg:text-sm font-mono uppercase flex justify-end text-left">
+                    <p className="pl-4 md:pl-10 lg:pl-100 pb-5 text-xs md:text-xs lg:text-sm font-[GT50] uppercase flex justify-end text-left">
                       {service.description}
                     </p>
                     <div className="flex justify-end pr-4 md:pr-6 lg:pr-10">
-                      <div className="flex font-mono gap-2 md:gap-2 lg:gap-3 items-center py-3 md:py-4 lg:py-5 text-xs md:text-xs lg:text-sm">
+                      <div className="flex font-[GT50] gap-2 md:gap-2 lg:gap-3 items-center py-3 md:py-4 lg:py-5 text-xs md:text-xs lg:text-sm">
                         [ Learn more <ArrowRight size={12} className="md:w-[13px] md:h-[13px] lg:w-[15px] lg:h-[15px]" /> ]
                       </div>
                     </div>
@@ -117,7 +117,7 @@ export default function OurServices() {
               </div>
             );
           })}
-            <div className="p-3 md:p-4 lg:p-5 font-mono border-t border-blue-900">
+            <div className="p-3 md:p-4 lg:p-5 font-[GT50] border-t border-blue-900">
                 <div className="relative h-14 md:h-16 lg:h-20 overflow-hidden group">
                     <div className="absolute inset-0 bg-blue-700 text-white uppercase flex items-center justify-center cursor-pointer transition-all duration-300 group-hover:-translate-y-full group-hover:scale-0 text-xs md:text-sm lg:text-base">
                         View All Services

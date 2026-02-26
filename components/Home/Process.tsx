@@ -24,7 +24,7 @@ export default function Process() {
             step
           </h1>
           <div className="w-full md:w-80 md:mt-10 lg:w-100 relative left-0 md:left-10 lg:left-20 px-3 md:px-0">
-            <p className="text-blue-900 md:bg-[#e9e7e0] font-mono text-sm md:text-base lg:text-[18px] uppercase tracking-[1px]">
+            <p className="text-blue-900 md:bg-[#e9e7e0] font-[GT50] text-sm md:text-base lg:text-[18px] uppercase tracking-[1px]">
               Navigating regulatory agencies can seem like an insurmountable
               task for architects, engineers, owners and contractors.
             </p>

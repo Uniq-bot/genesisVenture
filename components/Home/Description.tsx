@@ -65,7 +65,7 @@ export default function Description() {
     }, [])
 
     return(
-        <div ref={containerRef} className="w-full min-h-150  bg-blue-900 gap-8 md:gap-20 flex flex-col overflow-hidden py-10 md:py-0">
+        <div ref={containerRef} className="w-full min-h-150  bg-[#1925aa] gap-8 md:gap-20 flex flex-col overflow-hidden py-10 md:py-0">
             <p
                 ref={mainTextRef}
                 className="text-2xl sm:text-3xl md:text-4xl w-full md:w-2/3 pt-10 md:pt-20 px-5 md:pl-5 text-left font-[PPFONT] overflow-hidden">
@@ -74,12 +74,12 @@ export default function Description() {
             <div className="flex flex-col mb-10 md:flex-row justify-end gap-3 overflow-hidden px-5 md:pl-10">
                 <p
                     ref={leftTextRef}
-                    className="text-xs md:text-sm tracking-tighter w-full md:w-100 pr-0 md:pr-5 text-left font-mono">
+                    className="text-xs md:text-sm tracking-tighter w-full md:w-100 pr-0 md:pr-5 text-left font-[GT50]">
                     From the first idea to sign-off, Outsource is by your side—helping you navigate code, construction, compliance, and whatever else your project needs.
                 </p>
                 <p
                     ref={rightTextRef}
-                    className="text-xs md:text-sm tracking-tighter w-full md:w-100 pr-0 md:pr-5 text-left font-mono">
+                    className="text-xs md:text-sm tracking-tighter w-full md:w-100 pr-0 md:pr-5 text-left font-[GT50]">
                     Partnering with Outsource Special Inspections, Inc., we deliver a streamlined, start-to-finish approach—from permits and approvals to inspections and sign-offs.
                 </p>
             </div>

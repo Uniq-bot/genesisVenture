@@ -4,3 +4,7 @@
   font-family: "PPFONT";
   src: url("/fonts/PPNeueMontreal-Regular.woff2");
 }
+@font-face{
+  font-family: "GT50";;
+  src: url("/fonts/GTAmericaMono-Regular.woff2");
+}

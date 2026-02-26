@@ -45,7 +45,7 @@ const data = [
             <h1>{item.title}</h1>
             <p>{item.number}</p>
           </div>
-          <p className="py-10 px-5 pr-30 border-b border-blue-900 font-mono w-full text-sm">
+          <p className="py-10 px-5 pr-30 border-b border-blue-900 font-[GT50] w-full text-sm">
             {item.description.toUpperCase()}
           </p>
         </div>
